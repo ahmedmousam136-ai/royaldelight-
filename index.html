@@ -1,0 +1,2474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="The Royal Delight - Premium Multi-Cuisine Fine Dining in Malda, West Bengal" />
+<title>The Royal Delight | Fine Dining · Malda</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+<style>
+
+
+/* ==============================================
+   CSS CUSTOM PROPERTIES
+============================================== */
+
+:root {
+  --black:       #07060A;
+  --deep:        #110D16;
+  --deep2:       #1B1525;
+  --maroon:      #7B1C2A;
+  --maroon2:     #9E2438;
+  --gold:        #C49A28;
+  --gold2:       #E4B840;
+  --gold-lt:     #F5D470;
+  --cream:       #F2EAD8;
+  --cream2:      #D6C9AE;
+  --white:       #FDFCF8;
+  --muted:       rgba(242, 234, 216, 0.5);
+  --glass-bg:    rgba(17, 13, 22, 0.72);
+  --glass-bdr:   rgba(196, 154, 40, 0.2);
+  --pad:         clamp(4rem, 9vw, 7rem);
+  --radius:      3px;
+  --transition:  0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ==============================================
+   RESET
+============================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background: var(--black);
+  color: var(--cream2);
+  overflow-x: hidden;
+  line-height: 1.75;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 3px;
+}
+
+/* ==============================================
+   UTILITY
+============================================== */
+
+.gold-text {
+  color: var(--gold);
+}
+
+.italic {
+  font-style: italic;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin-right: 0.6rem;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.08;
+  margin-bottom: 1.2rem;
+}
+
+.section-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.section-sub {
+  font-size: 0.9rem;
+  color: var(--muted);
+  max-width: 520px;
+  line-height: 1.8;
+}
+
+/* Reveal on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal.delay-1 { transition-delay: 0.12s; }
+.reveal.delay-2 { transition-delay: 0.24s; }
+.reveal.delay-3 { transition-delay: 0.36s; }
+.reveal.delay-4 { transition-delay: 0.48s; }
+
+/* ==============================================
+   NAVIGATION
+============================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(1.2rem, 5vw, 3.5rem);
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.navbar.scrolled {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-bdr);
+}
+
+/* Logo */
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.nav-brand-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(0.75rem, 1.8vw, 1rem);
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+}
+
+.nav-brand-sub {
+  font-size: 0.52rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cream2);
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+/* Links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2.2rem);
+}
+
+.nav-links a {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--cream2);
+  transition: color 0.25s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-reserve {
+  padding: 0.45rem 1.3rem;
+  border: 1px solid var(--gold);
+  border-radius: 40px;
+  color: var(--gold) !important;
+  transition: background 0.25s, color 0.25s !important;
+  font-weight: 600 !important;
+}
+
+.nav-reserve:hover {
+  background: var(--gold) !important;
+  color: var(--black) !important;
+}
+
+.nav-reserve::after {
+  display: none !important;
+}
+
+/* Hamburger */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 1100;
+}
+
+.burger span {
+  display: block;
+  width: 26px;
+  height: 1.5px;
+  background: var(--cream);
+  transition: all 0.3s;
+  transform-origin: center;
+}
+
+.burger.open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.burger.open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Mobile overlay menu */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 6, 10, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 1000;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s;
+}
+
+.mobile-nav.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+}
+
+.mobile-nav a:hover {
+  color: var(--gold);
+}
+
+/* ==============================================
+   HERO SECTION
+============================================== */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Full-bleed corridor image */
+.hero-image {
+  position: absolute;
+  inset: -4%;
+  background-image: url('1783107186024_image.png');
+  background-size: cover;
+  background-position: center top;
+  will-change: transform;
+  animation: heroScale 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroScale {
+  from { transform: scale(1.04) translateY(0); }
+  to   { transform: scale(1.08) translateY(-2%); }
+}
+
+/* Multi-layer dark overlay */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 6, 10, 0.55) 0%,
+    rgba(7, 6, 10, 0.25) 40%,
+    rgba(7, 6, 10, 0.65) 80%,
+    rgba(7, 6, 10, 0.95) 100%
+  );
+}
+
+/* Vignette from sides */
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(7, 6, 10, 0.7) 100%
+  );
+}
+
+/* Cinematic letterbox bars */
+.hero-bar-top,
+.hero-bar-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: clamp(12px, 2vh, 20px);
+  background: var(--black);
+  z-index: 2;
+}
+
+.hero-bar-top { top: 0; }
+.hero-bar-bottom { bottom: 0; }
+
+/* Gold horizontal lines */
+.hero-line-top,
+.hero-line-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--gold) 30%,
+    var(--gold) 70%,
+    transparent 100%
+  );
+  opacity: 0.5;
+  z-index: 2;
+}
+
+.hero-line-top    { top: clamp(12px, 2vh, 20px); }
+.hero-line-bottom { bottom: clamp(12px, 2vh, 20px); }
+
+/* Corner ornaments */
+.hero-corner {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  z-index: 2;
+}
+
+.hero-corner-tl {
+  top: clamp(24px, 4vh, 44px);
+  left: clamp(1.5rem, 4vw, 3.5rem);
+  border-top: 1px solid rgba(196, 154, 40, 0.5);
+  border-left: 1px solid rgba(196, 154, 40, 0.5);
+}
+
+.hero-corner-tr {
+  top: clamp(24px, 4vh, 44px);
+  right: clamp(1.5rem, 4vw, 3.5rem);
+  border-top: 1px solid rgba(196, 154, 40, 0.5);
+  border-right: 1px solid rgba(196, 154, 40, 0.5);
+}
+
+.hero-corner-bl {
+  bottom: clamp(24px, 4vh, 44px);
+  left: clamp(1.5rem, 4vw, 3.5rem);
+  border-bottom: 1px solid rgba(196, 154, 40, 0.5);
+  border-left: 1px solid rgba(196, 154, 40, 0.5);
+}
+
+.hero-corner-br {
+  bottom: clamp(24px, 4vh, 44px);
+  right: clamp(1.5rem, 4vw, 3.5rem);
+  border-bottom: 1px solid rgba(196, 154, 40, 0.5);
+  border-right: 1px solid rgba(196, 154, 40, 0.5);
+}
+
+/* Main hero text */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 2rem clamp(1.2rem, 6vw, 4rem);
+  max-width: 860px;
+}
+
+.hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold2);
+  font-weight: 500;
+  margin-bottom: 1.6rem;
+  opacity: 0;
+  animation: heroFadeUp 0.9s 0.3s forwards;
+}
+
+.hero-kicker::before,
+.hero-kicker::after {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-main-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.2rem, 7.5vw, 6.2rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.3rem;
+  opacity: 0;
+  animation: heroFadeUp 1s 0.5s forwards;
+  text-shadow: 0 2px 60px rgba(7, 6, 10, 0.8);
+}
+
+.hero-main-title .accent {
+  display: block;
+  color: var(--gold);
+  font-size: 0.65em;
+  letter-spacing: 0.12em;
+  margin-top: 0.15em;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin: 2rem auto;
+  opacity: 0;
+  animation: heroFadeUp 0.8s 0.75s forwards;
+}
+
+.hero-divider::before,
+.hero-divider::after {
+  content: '';
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(196, 154, 40, 0.7)
+  );
+}
+
+.hero-divider::after {
+  background: linear-gradient(
+    90deg,
+    rgba(196, 154, 40, 0.7),
+    transparent
+  );
+}
+
+.hero-divider-diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2.8vw, 1.55rem);
+  font-style: italic;
+  color: var(--cream2);
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+  max-width: 580px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: heroFadeUp 0.9s 0.95s forwards;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-top: 2.8rem;
+  opacity: 0;
+  animation: heroFadeUp 0.9s 1.15s forwards;
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2.2rem;
+  background: var(--gold);
+  color: var(--black);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 40px;
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 4px 24px rgba(196, 154, 40, 0.35);
+}
+
+.btn-gold:hover {
+  background: var(--gold2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 36px rgba(196, 154, 40, 0.5);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 2.2rem;
+  border: 1px solid rgba(242, 234, 216, 0.35);
+  color: var(--cream);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 40px;
+  transition: border-color 0.25s, color 0.25s, background 0.25s;
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(196, 154, 40, 0.08);
+}
+
+/* Scroll cue */
+.hero-scroll-cue {
+  position: absolute;
+  bottom: clamp(2rem, 5vh, 3.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: heroFadeUp 0.8s 1.5s forwards;
+}
+
+.hero-scroll-cue span {
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(196, 154, 40, 0.6);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(
+    to bottom,
+    var(--gold),
+    transparent
+  );
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: scaleY(1); opacity: 0.6; }
+  50%       { transform: scaleY(1.4); opacity: 1; }
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero stat bar */
+.hero-stats {
+  position: absolute;
+  bottom: clamp(1.5rem, 4vh, 2.8rem);
+  right: clamp(1.5rem, 4vw, 3.5rem);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  opacity: 0;
+  animation: heroFadeUp 0.8s 1.4s forwards;
+}
+
+.hero-stat {
+  text-align: right;
+}
+
+.hero-stat .num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+}
+
+.hero-stat .lbl {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ==============================================
+   FEATURES STRIP
+============================================== */
+
+.features-strip {
+  background: var(--deep);
+  border-top: 1px solid rgba(196, 154, 40, 0.12);
+  border-bottom: 1px solid rgba(196, 154, 40, 0.12);
+  padding: 0;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.feature-cell {
+  padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1rem, 3vw, 2rem);
+  border-right: 1px solid rgba(196, 154, 40, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.8rem;
+  transition: background var(--transition);
+  cursor: default;
+}
+
+.feature-cell:last-child {
+  border-right: none;
+}
+
+.feature-cell:hover {
+  background: rgba(196, 154, 40, 0.05);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 154, 40, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 1.1rem;
+  transition: background var(--transition), color var(--transition);
+}
+
+.feature-cell:hover .feature-icon {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.feature-cell h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cream);
+}
+
+.feature-cell p {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ==============================================
+   STORY / ABOUT
+============================================== */
+
+.story-section {
+  padding: var(--pad) clamp(1.5rem, 7vw, 6rem);
+  background: var(--black);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 7rem);
+  align-items: center;
+}
+
+.story-text .section-title {
+  margin-bottom: 1.5rem;
+}
+
+.story-text p {
+  font-size: 0.9rem;
+  color: var(--cream2);
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+
+.story-pull {
+  border-left: 2px solid var(--gold);
+  padding-left: 1.4rem;
+  margin: 2rem 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--cream);
+  line-height: 1.5;
+}
+
+.story-image-block {
+  position: relative;
+}
+
+.story-main-img {
+  width: 100%;
+  height: clamp(340px, 50vw, 520px);
+  object-fit: cover;
+  border-radius: var(--radius);
+  filter: brightness(0.88) saturate(0.9);
+  transition: filter 0.5s, transform 0.5s;
+}
+
+.story-main-img:hover {
+  filter: brightness(1) saturate(1);
+  transform: scale(1.01);
+}
+
+.story-badge {
+  position: absolute;
+  bottom: -1.5rem;
+  right: -1.5rem;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--maroon);
+  border: 3px solid var(--black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.65rem;
+  color: var(--gold);
+  text-align: center;
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* ==============================================
+   GALLERY SECTION — PREMIUM CINEMATIC GRID
+============================================== */
+
+.gallery-section {
+  padding: var(--pad) clamp(1.5rem, 7vw, 6rem);
+  background: var(--deep);
+  overflow: hidden;
+}
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.gallery-header-right {
+  font-size: 0.82rem;
+  color: var(--muted);
+  max-width: 280px;
+  text-align: right;
+  line-height: 1.7;
+}
+
+/* Gallery grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 280px 240px;
+  gap: 8px;
+}
+
+/* Individual cells */
+.gal-cell {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+/* Grid placement */
+.gal-cell-1 { grid-column: 1 / 6;  grid-row: 1 / 3; }
+.gal-cell-2 { grid-column: 6 / 9;  grid-row: 1; }
+.gal-cell-3 { grid-column: 9 / 13; grid-row: 1; }
+.gal-cell-4 { grid-column: 6 / 10; grid-row: 2; }
+.gal-cell-5 { grid-column: 10 / 13; grid-row: 2; }
+
+/* Image inside cell */
+.gal-cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75) saturate(0.85);
+  transition: transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1),
+              filter 0.5s ease;
+  transform: scale(1.03);
+}
+
+.gal-cell:hover img {
+  transform: scale(1.1);
+  filter: brightness(0.9) saturate(1.05);
+}
+
+/* 3D tilt effect overlay */
+.gal-cell-inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+/* Caption overlay */
+.gal-caption {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.4rem 1.3rem;
+  background: linear-gradient(
+    to top,
+    rgba(7, 6, 10, 0.78) 0%,
+    rgba(7, 6, 10, 0.2) 50%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.gal-cell:hover .gal-caption {
+  opacity: 1;
+}
+
+.gal-caption span {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold2);
+  font-weight: 500;
+}
+
+/* Gold border on hover */
+.gal-cell::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(196, 154, 40, 0);
+  transition: border-color 0.4s;
+  pointer-events: none;
+  border-radius: var(--radius);
+  z-index: 2;
+}
+
+.gal-cell:hover::after {
+  border-color: rgba(196, 154, 40, 0.4);
+}
+
+/* ==============================================
+   MENU SECTION
+============================================== */
+
+.menu-section {
+  padding: var(--pad) clamp(1.5rem, 7vw, 6rem);
+  background: var(--black);
+}
+
+.menu-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.menu-header .section-sub {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Tab buttons */
+.menu-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.menu-tab {
+  padding: 0.5rem 1.4rem;
+  background: transparent;
+  border: 1px solid rgba(196, 154, 40, 0.25);
+  border-radius: 40px;
+  color: var(--cream2);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s;
+  min-height: 44px;
+}
+
+.menu-tab.active,
+.menu-tab:hover {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+  font-weight: 700;
+}
+
+/* Panels */
+.menu-panel {
+  display: none;
+}
+
+.menu-panel.active {
+  display: block;
+  animation: panelFade 0.4s ease;
+}
+
+@keyframes panelFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Cards grid */
+.menu-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: 1.2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.menu-card {
+  background: var(--deep2);
+  border: 1px solid rgba(196, 154, 40, 0.1);
+  border-radius: 4px;
+  padding: 1.8rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.35s, box-shadow 0.35s;
+}
+
+.menu-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
+  background: var(--gold);
+  transition: height 0.4s;
+}
+
+.menu-card:hover::before {
+  height: 100%;
+}
+
+.menu-card:hover {
+  border-color: rgba(196, 154, 40, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.menu-card-num {
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  color: rgba(196, 154, 40, 0.5);
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+  display: block;
+}
+
+.menu-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.menu-card p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.menu-card-price {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(196, 154, 40, 0.1);
+}
+
+.menu-card-price .price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.menu-card-price i {
+  font-size: 0.9rem;
+  color: rgba(196, 154, 40, 0.3);
+  transition: color 0.25s;
+}
+
+.menu-card:hover .menu-card-price i {
+  color: var(--gold);
+}
+
+/* ==============================================
+   CONTACT SECTION
+============================================== */
+
+.contact-section {
+  padding: var(--pad) clamp(1.5rem, 7vw, 6rem);
+  background: var(--deep);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative rings */
+.contact-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 154, 40, 0.06);
+  pointer-events: none;
+}
+
+.contact-ring-1 {
+  width: 500px;
+  height: 500px;
+  bottom: -200px;
+  right: -100px;
+}
+
+.contact-ring-2 {
+  width: 360px;
+  height: 360px;
+  bottom: -120px;
+  right: -40px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(3rem, 6vw, 6rem);
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-left .section-title {
+  margin-bottom: 0.8rem;
+}
+
+.contact-left .section-sub {
+  margin-bottom: 2.5rem;
+}
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  background: rgba(27, 21, 37, 0.8);
+  border: 1px solid rgba(196, 154, 40, 0.18);
+  border-radius: 40px;
+  color: var(--white);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.88rem;
+  padding: 0 1.3rem;
+  min-height: 50px;
+  outline: none;
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.form-field textarea {
+  border-radius: 16px;
+  padding: 1rem 1.3rem;
+  min-height: 140px;
+  resize: vertical;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--gold);
+  background: rgba(196, 154, 40, 0.05);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: rgba(214, 201, 174, 0.3);
+}
+
+.btn-submit {
+  padding: 0.9rem 2rem;
+  background: var(--gold);
+  color: var(--black);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  min-height: 50px;
+  width: 100%;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+  box-shadow: 0 4px 20px rgba(196, 154, 40, 0.3);
+}
+
+.btn-submit:hover {
+  background: var(--gold2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(196, 154, 40, 0.45);
+}
+
+/* Info blocks */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.info-block {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  padding: 1.2rem 1.4rem;
+  background: rgba(7, 6, 10, 0.5);
+  border: 1px solid rgba(196, 154, 40, 0.1);
+  border-radius: 12px;
+  transition: border-color 0.3s;
+}
+
+.info-block:hover {
+  border-color: rgba(196, 154, 40, 0.3);
+}
+
+.info-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(123, 28, 42, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  font-size: 0.95rem;
+}
+
+.info-block h4 {
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.25rem;
+}
+
+.info-block p,
+.info-block a {
+  font-size: 0.84rem;
+  color: var(--cream2);
+  line-height: 1.6;
+}
+
+.info-block a:hover {
+  color: var(--gold);
+}
+
+.map-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(196, 154, 40, 0.12);
+  margin-top: 0.5rem;
+}
+
+.map-wrap iframe {
+  display: block;
+  width: 100%;
+  height: 240px;
+  border: none;
+}
+
+/* ==============================================
+   FOOTER
+============================================== */
+
+.site-footer {
+  background: rgba(4, 4, 7, 0.98);
+  border-top: 1px solid rgba(196, 154, 40, 0.12);
+  padding: 2.5rem clamp(1.5rem, 7vw, 6rem);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-brand {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.9rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.footer-brand small {
+  display: block;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.58em;
+  letter-spacing: 0.2em;
+  color: var(--cream2);
+  font-weight: 300;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.footer-copy {
+  font-size: 0.7rem;
+  color: rgba(196, 154, 40, 0.35);
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.4rem;
+}
+
+.footer-links a {
+  font-size: 0.7rem;
+  color: rgba(214, 201, 174, 0.35);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+/* ==============================================
+   FLOATING ACTION BUTTONS
+============================================== */
+
+.fab-group {
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 900;
+}
+
+.fab-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.25s, box-shadow 0.25s;
+  position: relative;
+}
+
+.fab-btn:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.fab-wa { background: #25D366; }
+.fab-call { background: var(--maroon); }
+
+.fab-tooltip {
+  position: absolute;
+  right: 62px;
+  background: var(--deep2);
+  color: var(--cream);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  padding: 5px 11px;
+  border-radius: 40px;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(6px);
+  transition: all 0.2s;
+  pointer-events: none;
+  border: 1px solid rgba(196, 154, 40, 0.2);
+}
+
+.fab-btn:hover .fab-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ==============================================
+   GLASSMORPHISM LIGHTBOX
+============================================== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(7, 6, 10, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s;
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(196, 154, 40, 0.2);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 154, 40, 0.3);
+  background: rgba(27, 21, 37, 0.8);
+  color: var(--cream);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+
+.lightbox-close:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+/* ==============================================
+   RESPONSIVE — TABLET (max 900px)
+============================================== */
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .burger    { display: flex; }
+  .mobile-nav { display: flex; }
+
+  .features-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .feature-cell:nth-child(2) {
+    border-right: none;
+  }
+
+  .story-section {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .story-image-block {
+    order: -1;
+  }
+
+  .story-badge {
+    bottom: -1rem;
+    right: 0;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 44vw 44vw 44vw;
+  }
+
+  .gal-cell-1 { grid-column: 1 / 3; grid-row: 1; }
+  .gal-cell-2 { grid-column: 1 / 2; grid-row: 2; }
+  .gal-cell-3 { grid-column: 2 / 3; grid-row: 2; }
+  .gal-cell-4 { grid-column: 1 / 2; grid-row: 3; }
+  .gal-cell-5 { grid-column: 2 / 3; grid-row: 3; }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-links {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    display: none;
+  }
+}
+
+/* ==============================================
+   RESPONSIVE — MOBILE (max 580px)
+============================================== */
+
+@media (max-width: 580px) {
+  .hero-main-title {
+    font-size: 2.2rem;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .feature-cell {
+    border-right: none;
+    border-bottom: 1px solid rgba(196, 154, 40, 0.1);
+  }
+
+  .feature-cell:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .gal-cell-1,
+  .gal-cell-2,
+  .gal-cell-3,
+  .gal-cell-4,
+  .gal-cell-5 {
+    grid-column: 1;
+    grid-row: auto;
+    height: 68vw;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-gold,
+  .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
+<nav class="navbar" id="mainNav">
+
+  <div class="nav-brand">
+    <span class="nav-brand-name">The Royal Delight</span>
+    <span class="nav-brand-sub">Multi-Cuisine Fine Dining · Malda</span>
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#story">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#contact" class="nav-reserve">Reserve</a></li>
+  </ul>
+
+  <button class="burger" id="burgerBtn" aria-label="Toggle navigation menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+</nav>
+
+<!-- Mobile navigation overlay -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#hero"    class="mob-link">Home</a>
+  <a href="#story"   class="mob-link">About</a>
+  <a href="#gallery" class="mob-link">Gallery</a>
+  <a href="#menu"    class="mob-link">Menu</a>
+  <a href="#contact" class="mob-link">Contact</a>
+</div>
+
+
+<!-- ============================================================
+     HERO — Image #1: 1783107186024_image.png (arched corridor)
+============================================================ -->
+<section class="hero" id="hero">
+
+  <div class="hero-image" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-vignette"></div>
+
+  <div class="hero-bar-top"></div>
+  <div class="hero-bar-bottom"></div>
+  <div class="hero-line-top"></div>
+  <div class="hero-line-bottom"></div>
+
+  <div class="hero-corner hero-corner-tl"></div>
+  <div class="hero-corner hero-corner-tr"></div>
+  <div class="hero-corner hero-corner-bl"></div>
+  <div class="hero-corner hero-corner-br"></div>
+
+  <div class="hero-content">
+
+    <p class="hero-kicker">Est. Malda, West Bengal</p>
+
+    <h1 class="hero-main-title">
+      The Royal
+      <span class="accent">Delight</span>
+    </h1>
+
+    <div class="hero-divider">
+      <div class="hero-divider-diamond"></div>
+    </div>
+
+    <p class="hero-tagline">
+      Where every corridor leads to grandeur,
+      and every dish tells a story of royal heritage.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#menu"    class="btn-gold">
+        <i class="fa-solid fa-utensils"></i>
+        Explore Menu
+      </a>
+      <a href="#contact" class="btn-outline">
+        <i class="fa-solid fa-calendar-check"></i>
+        Reserve a Table
+      </a>
+    </div>
+
+  </div>
+
+  <div class="hero-scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="num">50+</span>
+      <span class="lbl">Signature Dishes</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num">4.8</span>
+      <span class="lbl">Guest Rating</span>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     FEATURES STRIP
+============================================================ -->
+<div class="features-strip reveal">
+  <div class="features-grid">
+
+    <div class="feature-cell">
+      <div class="feature-icon">
+        <i class="fa-solid fa-fire-burner"></i>
+      </div>
+      <h3>Royal Kitchen</h3>
+      <p>Heritage recipes reimagined for the modern palate.</p>
+    </div>
+
+    <div class="feature-cell">
+      <div class="feature-icon">
+        <i class="fa-solid fa-gem"></i>
+      </div>
+      <h3>Baroque Grandeur</h3>
+      <p>Chandeliers, sculptures, and hand-crafted decor.</p>
+    </div>
+
+    <div class="feature-cell">
+      <div class="feature-icon">
+        <i class="fa-solid fa-award"></i>
+      </div>
+      <h3>Premium Service</h3>
+      <p>Every guest is treated like royalty from arrival.</p>
+    </div>
+
+    <div class="feature-cell">
+      <div class="feature-icon">
+        <i class="fa-solid fa-globe"></i>
+      </div>
+      <h3>Multi-Cuisine</h3>
+      <p>Indian, Mughlai, and Chinese mastered under one roof.</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================================================
+     STORY / ABOUT  — uses gallery-1 image for the photo
+============================================================ -->
+<section class="story-section" id="story">
+
+  <div class="story-text reveal">
+    <span class="eyebrow">Our Heritage</span>
+    <h2 class="section-title">
+      Born of Passion,<br>
+      Steeped in <em>Royal</em> Legacy
+    </h2>
+    <p>
+      Nestled along the National Highway in the heart of Malda, The Royal
+      Delight was born from a singular vision: to bring the opulence of
+      Mughal courts and the soul of Indian home cooking into one
+      extraordinary space.
+    </p>
+    <blockquote class="story-pull">
+      "A meal here is not merely dinner —
+      it is theatre, heritage, and love on every plate."
+    </blockquote>
+    <p>
+      From baroque chandeliers casting warm amber light over ornate red
+      ceilings, to hand-curated classical sculptures and vinyl records
+      adorning brocade walls — every corner of The Royal Delight is a
+      chapter in a living story of artistry, culture, and hospitality.
+    </p>
+    <a href="#gallery" class="btn-gold" style="margin-top: 2rem; display: inline-flex;">
+      <i class="fa-solid fa-images"></i>
+      View Gallery
+    </a>
+  </div>
+
+  <div class="story-image-block reveal delay-2">
+    <img
+      class="story-main-img"
+      src="1783107194035_image.png"
+      alt="Ornate red ceiling with baroque chandeliers at The Royal Delight"
+      loading="lazy"
+    />
+    <div class="story-badge">
+      THE<br>ROYAL<br>DELIGHT
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     GALLERY — Images #2-5: gallery-1 through gallery-4
+============================================================ -->
+<section class="gallery-section" id="gallery">
+
+  <div class="gallery-header">
+
+    <div class="reveal">
+      <span class="eyebrow">Our Interiors</span>
+      <h2 class="section-title">
+        Step Inside the <em>Palace</em>
+      </h2>
+    </div>
+
+    <p class="gallery-header-right reveal delay-2">
+      Five perspectives of a space designed to transport
+      you from the very first step through our doors.
+    </p>
+
+  </div>
+
+  <div class="gallery-grid reveal delay-1">
+
+    <!-- Cell 1 — largest, left column -->
+    <div
+      class="gal-cell gal-cell-1"
+      data-img="1783107194035_image.png"
+      title="Click to enlarge"
+    >
+      <img
+        src="1783107194035_image.png"
+        alt="Grand ornate red ceiling with gold chandeliers"
+        loading="lazy"
+      />
+      <div class="gal-caption">
+        <span>The Celestial Ceiling</span>
+      </div>
+    </div>
+
+    <!-- Cell 2 -->
+    <div
+      class="gal-cell gal-cell-2"
+      data-img="1783107202924_image.png"
+      title="Click to enlarge"
+    >
+      <img
+        src="1783107202924_image.png"
+        alt="Heritage corner with sculptures, vinyl records, and floral wallpaper"
+        loading="lazy"
+      />
+      <div class="gal-caption">
+        <span>Heritage Corner</span>
+      </div>
+    </div>
+
+    <!-- Cell 3 -->
+    <div
+      class="gal-cell gal-cell-3"
+      data-img="1783107213711_image.png"
+      title="Click to enlarge"
+    >
+      <img
+        src="1783107213711_image.png"
+        alt="Warm lounge with red brocade walls and pendant lights"
+        loading="lazy"
+      />
+      <div class="gal-caption">
+        <span>The Royal Lounge</span>
+      </div>
+    </div>
+
+    <!-- Cell 4 -->
+    <div
+      class="gal-cell gal-cell-4"
+      data-img="1783107225468_image.png"
+      title="Click to enlarge"
+    >
+      <img
+        src="1783107225468_image.png"
+        alt="Reception counter with The Royal Delight illuminated signage"
+        loading="lazy"
+      />
+      <div class="gal-caption">
+        <span>Grand Reception</span>
+      </div>
+    </div>
+
+    <!-- Cell 5 — same as hero for variety in this column -->
+    <div
+      class="gal-cell gal-cell-5"
+      data-img="1783107186024_image.png"
+      title="Click to enlarge"
+    >
+      <img
+        src="1783107186024_image.png"
+        alt="Arched corridor with warm pendant lights"
+        loading="lazy"
+      />
+      <div class="gal-caption">
+        <span>The Royal Corridor</span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close image">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <img src="" alt="Gallery image enlarged" id="lightboxImg" />
+</div>
+
+
+<!-- ============================================================
+     MENU
+============================================================ -->
+<section class="menu-section" id="menu">
+
+  <div class="menu-header reveal">
+    <span class="eyebrow">Culinary Mastery</span>
+    <h2 class="section-title">
+      The <em>Royal</em> Menu
+    </h2>
+    <p class="section-sub">
+      A curated selection spanning the finest Indian, Mughlai,
+      and Chinese traditions — each dish a masterpiece.
+    </p>
+  </div>
+
+  <div class="menu-tabs reveal delay-1">
+    <button class="menu-tab active" data-target="indian">
+      Indian
+    </button>
+    <button class="menu-tab" data-target="mughlai">
+      Mughlai
+    </button>
+    <button class="menu-tab" data-target="chinese">
+      Chinese
+    </button>
+    <button class="menu-tab" data-target="salad">
+      Salad &amp; Papad
+    </button>
+  </div>
+
+  <!-- Indian Main Course -->
+  <div class="menu-panel active" id="panel-indian">
+    <div class="menu-cards">
+
+      <div class="menu-card">
+        <span class="menu-card-num">01 — Indian</span>
+        <h3>Butter Chicken</h3>
+        <p>
+          Tender chicken slow-cooked in a velvety tomato-butter
+          gravy, kissed with aromatic whole spices and fresh cream.
+        </p>
+        <div class="menu-card-price">
+          <span class="price">Rs. 320</span>
+          <i class="fa-solid fa-leaf"></i>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <span class="menu-card-num">02 — Indian</span>
+        <h3>Paneer Lababdar</h3>
+        <p>
+          Rich, creamy tomato-onion gravy cradling soft cottage-cheese
+          cubes — pure indulgence in every luxurious bite.
+        </p>
+        <div class="menu-card-price">
+          <span class="price">Rs. 280</span>
+          <i class="fa-solid fa-seedling"></i>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <span class="menu-card-num">03 — Indian</span>
+        <h3>Garlic Naan</h3>
+        <p>
+          Pillowy tandoor-baked flatbread brushed generously with
+          garlic butter and fresh coriander, straight from the fire.
+        </p>
+        <div class="menu-card-price">
+          <span class="price">Rs. 60</span>
+          <i class="fa-solid fa-fire-flame-simple"></i>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mughlai -->
+  <div class="menu-panel" id="panel-mughlai">
+    <div class="menu-cards">
+
+      <div class="menu-card">
+        <span class="menu-card-num">01 — Mughlai</span>
+        <h3>Royal Mutton Biryani</h3>
+        <p>
+          Aged Basmati layered with slow-braised mutton, pure saffron,
+          and Mughal-era whole spices — a crown jewel of the kitchen.
+        </p>
+        <div class="menu-card-price">
+          <span class="price">Rs. 480</span>
+          <i class="fa-solid fa-crown"></i>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <span class="menu-card-num">02 — Mughlai</span>
+        <h3>Nargisi Kofta</h3>
+        <p>
+          Hard-boiled eggs encased in spiced lamb mince, simmered
+          in an opulent Mughlai gravy of cashews and cream.
+        </p>
+        <div class="menu-card-price">
+          <span class="price">Rs. 380</span>
+          <i class="fa-solid fa-star"></i>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <span class="menu-card-num">03 — Mughlai</span>
+        <h3>Shahi Tukda</h3>
+        <p>
+          Double-fried bread soaked in rose saffron syrup, crowned
+          with thickened cream, silver leaf, and crushed pistachios.
+        </p>
+        <div class="menu-card-price">
+          <span class="price">Rs. 160</span>
+          <i class="fa-solid fa-gem"></i>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Chinese -->
+  <div class="menu-panel" id="panel-chinese">
+    <div class="menu-cards">
+
+      <div class="menu-card">
+        <span class="menu-card-num">01 — Chinese</span>
+        <h3>Hakka Noodles</h3>
+        <p>
+          Wok-tossed egg noodles with crisp seasonal vegetables
+          in a smoky, umami-rich soy-ginger sauce.
+        </p>
+        <div class="menu-card-price">
+          <span class="price">Rs. 220</span>
+          <i class="fa-solid fa-bowl-rice"></i>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <span class="menu-card-num">02 — Chinese</span>
+        <h3>Szechuan Chilli Chicken</h3>
+        <p>
+          Crispy golden chicken tossed in a fiery Szechuan
+          peppercorn and dried-chilli sauce with spring onion.
+        </p>
+        <div class="menu-card-price">
+          <span class="price">Rs. 310</span>
+          <i class="fa-solid fa-pepper-hot"></i>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <span class="menu-card-num">03 — Chinese</span>
+        <h3>Veg Manchurian</h3>
+        <p>
+          Soft vegetable dumplings tossed in a tangy, umami-rich
+          Manchurian sauce with garlic and ginger.
+        </p>
+        <div class="menu-card-price">
+          <span class="price">Rs. 200</span>
+          <i class="fa-solid fa-seedling"></i>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Salad and Papad -->
+  <div class="menu-panel" id="panel-salad">
+    <div class="menu-cards">
+
+      <div class="menu-card">
+        <span class="menu-card-num">01 — Fresh</span>
+        <h3>Crisp Green Garden Salad</h3>
+        <p>
+          Seasonal greens, cherry tomatoes, cucumber, and radish
+          in a light lemon-herb dressing with herb croutons.
+        </p>
+        <div class="menu-card-price">
+          <span class="price">Rs. 120</span>
+          <i class="fa-solid fa-leaf"></i>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <span class="menu-card-num">02 — Classic</span>
+        <h3>Roasted Masala Papad</h3>
+        <p>
+          Flame-roasted lentil wafer topped generously with spiced
+          onion, ripe tomato, fresh coriander, and chaat masala.
+        </p>
+        <div class="menu-card-price">
+          <span class="price">Rs. 60</span>
+          <i class="fa-solid fa-fire-flame-simple"></i>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <span class="menu-card-num">03 — Refreshing</span>
+        <h3>Boondi Raita</h3>
+        <p>
+          Cool, hand-churned yoghurt studded with crispy boondi,
+          roasted cumin, black salt, and a hint of fresh mint.
+        </p>
+        <div class="menu-card-price">
+          <span class="price">Rs. 80</span>
+          <i class="fa-solid fa-snowflake"></i>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     CONTACT
+============================================================ -->
+<section class="contact-section" id="contact">
+
+  <div class="contact-ring contact-ring-1"></div>
+  <div class="contact-ring contact-ring-2"></div>
+
+  <div class="contact-grid">
+
+    <!-- Left: form -->
+    <div class="contact-left reveal">
+      <span class="eyebrow">Reservations</span>
+      <h2 class="section-title">
+        Reserve Your <em>Royal</em> Table
+      </h2>
+      <p class="section-sub">
+        We would love to host you. Send us a message and our
+        team will confirm your reservation promptly.
+      </p>
+
+      <form class="contact-form" id="contactForm" novalidate>
+
+        <div class="form-row">
+          <div class="form-field">
+            <input
+              type="text"
+              placeholder="Your Name"
+              required
+              autocomplete="name"
+            />
+          </div>
+          <div class="form-field">
+            <input
+              type="email"
+              placeholder="Email Address"
+              required
+              autocomplete="email"
+            />
+          </div>
+        </div>
+
+        <div class="form-field">
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            autocomplete="tel"
+          />
+        </div>
+
+        <div class="form-field">
+          <textarea
+            placeholder="Your message or special requests..."
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <i class="fa-solid fa-paper-plane"></i>
+          Send Message
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Right: info + map -->
+    <div class="contact-info reveal delay-2">
+
+      <div class="info-block">
+        <div class="info-icon">
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div>
+          <h4>Our Address</h4>
+          <p>
+            12, Maheshwari Building, National Highway<br>
+            Sarva Mangala Pally, Rathbari<br>
+            Malda, West Bengal — 732101
+          </p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-icon">
+          <i class="fa-solid fa-phone"></i>
+        </div>
+        <div>
+          <h4>Phone</h4>
+          <a href="tel:+917585877902">+91 75858 77902</a>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-icon">
+          <i class="fa-brands fa-whatsapp"></i>
+        </div>
+        <div>
+          <h4>WhatsApp</h4>
+          <a
+            href="https://wa.me/917585877902"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Chat with us on WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <iframe
+          src="https://maps.google.com/maps?q=12+Maheshwari+Building+National+Highway+Sarva+Mangala+Pally+Rathbari+Malda+West+Bengal+732101&output=embed"
+          width="100%"
+          height="240"
+          style="border: 0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="The Royal Delight — Google Maps Location"
+        ></iframe>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="site-footer">
+
+  <div class="footer-brand">
+    The Royal Delight
+    <small>Fine Dining · Malda, West Bengal</small>
+  </div>
+
+  <p class="footer-copy">
+    &copy; 2025 The Royal Delight. All rights reserved.
+  </p>
+
+  <div class="footer-links">
+    <a href="#hero">Home</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#menu">Menu</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+</footer>
+
+
+<!-- ============================================================
+     FLOATING ACTION BUTTONS
+============================================================ -->
+<div class="fab-group">
+
+  <a
+    href="https://wa.me/917585877902"
+    class="fab-btn fab-wa"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Chat on WhatsApp"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="fab-tooltip">WhatsApp Us</span>
+  </a>
+
+  <a
+    href="tel:+917585877902"
+    class="fab-btn fab-call"
+    aria-label="Call The Royal Delight"
+  >
+    <i class="fa-solid fa-phone"></i>
+    <span class="fab-tooltip">Call Us</span>
+  </a>
+
+</div>
+
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+
+  /* ---- Navbar scroll effect ---- */
+  var navbar = document.getElementById('mainNav');
+
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 60) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  }, { passive: true });
+
+
+  /* ---- Hamburger / mobile nav ---- */
+  var burgerBtn  = document.getElementById('burgerBtn');
+  var mobileNav  = document.getElementById('mobileNav');
+
+  burgerBtn.addEventListener('click', function () {
+    burgerBtn.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow =
+      mobileNav.classList.contains('open') ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.mob-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      burgerBtn.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+
+  /* ---- Parallax hero on mouse move (desktop only) ---- */
+  var heroBg = document.getElementById('heroBg');
+
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.addEventListener('mousemove', function (e) {
+      var xRatio = (e.clientX / window.innerWidth  - 0.5) * 20;
+      var yRatio = (e.clientY / window.innerHeight - 0.5) * 12;
+      heroBg.style.transform =
+        'scale(1.08) translate(' + xRatio + 'px, ' + yRatio + 'px)';
+    }, { passive: true });
+  }
+
+
+  /* ---- Scroll reveal with IntersectionObserver ---- */
+  var revealEls = document.querySelectorAll('.reveal');
+
+  var revealObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry, i) {
+      if (entry.isIntersecting) {
+        setTimeout(function () {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealEls.forEach(function (el) {
+    revealObserver.observe(el);
+  });
+
+
+  /* ---- Gallery 3D tilt on hover ---- */
+  document.querySelectorAll('.gal-cell').forEach(function (cell) {
+    cell.addEventListener('mousemove', function (e) {
+      var rect = cell.getBoundingClientRect();
+      var x = (e.clientX - rect.left) / rect.width  - 0.5;
+      var y = (e.clientY - rect.top)  / rect.height - 0.5;
+      var rx =  y * 8;
+      var ry = -x * 8;
+      cell.style.transform =
+        'perspective(600px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg) scale(1.02)';
+    });
+
+    cell.addEventListener('mouseleave', function () {
+      cell.style.transform = '';
+    });
+  });
+
+
+  /* ---- Gallery lightbox ---- */
+  var lightbox      = document.getElementById('lightbox');
+  var lightboxImg   = document.getElementById('lightboxImg');
+  var lightboxClose = document.getElementById('lightboxClose');
+
+  document.querySelectorAll('.gal-cell').forEach(function (cell) {
+    cell.addEventListener('click', function () {
+      var imgSrc = cell.getAttribute('data-img');
+      if (!imgSrc) { return; }
+      lightboxImg.src = imgSrc;
+      lightboxImg.alt = cell.querySelector('img').alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  lightboxClose.addEventListener('click', function () {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxImg.src = '';
+  });
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
+  });
+
+
+  /* ---- Menu tabs ---- */
+  document.querySelectorAll('.menu-tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      document.querySelectorAll('.menu-tab').forEach(function (t) {
+        t.classList.remove('active');
+      });
+      document.querySelectorAll('.menu-panel').forEach(function (p) {
+        p.classList.remove('active');
+      });
+      tab.classList.add('active');
+      var targetId = 'panel-' + tab.getAttribute('data-target');
+      var panel = document.getElementById(targetId);
+      if (panel) {
+        panel.classList.add('active');
+      }
+    });
+  });
+
+
+  /* ---- Contact form ---- */
+  var contactForm = document.getElementById('contactForm');
+
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var btn = this.querySelector('.btn-submit');
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+    btn.disabled = true;
+
+    setTimeout(function () {
+      btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Message Sent!';
+      btn.style.background = '#2e7d4a';
+
+      setTimeout(function () {
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+        btn.style.background = '';
+        btn.disabled = false;
+        contactForm.reset();
+      }, 3500);
+    }, 1400);
+  });
+
+</script>
+
+</body>
+</html>
